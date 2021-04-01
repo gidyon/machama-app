@@ -1,0 +1,592 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "chama.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/chamamembers": {
+      "get": {
+        "operationId": "ChamaAPI_ListChamaMembers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaListChamaMembersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      },
+      "post": {
+        "operationId": "ChamaAPI_CreateChamaMember",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaCreateChamaMemberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamamembers/{chamaMember.memberId}": {
+      "patch": {
+        "operationId": "ChamaAPI_UpdateChamaMember",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "chamaMember.memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaUpdateChamaMemberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamamembers/{memberId}": {
+      "get": {
+        "operationId": "ChamaAPI_GetChamaMember",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaChamaMember"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      },
+      "delete": {
+        "operationId": "ChamaAPI_DeleteChamaMember",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamamembers:listChamaMembers": {
+      "post": {
+        "operationId": "ChamaAPI_ListChamaMembers2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaListChamaMembersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaListChamaMembersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamas": {
+      "get": {
+        "operationId": "ChamaAPI_ListChamas",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaListChamasResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      },
+      "post": {
+        "operationId": "ChamaAPI_CreateChama",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaCreateChamaRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamas/{chama.chamaId}": {
+      "patch": {
+        "operationId": "ChamaAPI_UpdateChama",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "chama.chamaId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaUpdateChamaRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamas/{chamaId}": {
+      "get": {
+        "operationId": "ChamaAPI_GetChama",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaChama"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "chamaId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    },
+    "/api/chamas:listChamasRequest": {
+      "post": {
+        "operationId": "ChamaAPI_ListChamas2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/chamaListChamasResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/chamaListChamasRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAPI"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "chamaChama": {
+      "type": "object",
+      "properties": {
+        "chamaId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "createDate": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaChamaMember": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "type": "string"
+        },
+        "chamaId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "idNumber": {
+          "type": "string"
+        },
+        "residence": {
+          "type": "string"
+        },
+        "jobDetails": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "kyc": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "beneficiaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/chamaTrustPerson"
+          }
+        },
+        "guarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/chamaTrustPerson"
+          }
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string"
+        },
+        "registerDate": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaCreateChamaMemberRequest": {
+      "type": "object",
+      "properties": {
+        "chamaMember": {
+          "$ref": "#/definitions/chamaChamaMember"
+        }
+      }
+    },
+    "chamaCreateChamaRequest": {
+      "type": "object",
+      "properties": {
+        "chama": {
+          "$ref": "#/definitions/chamaChama"
+        }
+      }
+    },
+    "chamaListChamaMembersRequest": {
+      "type": "object",
+      "properties": {
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "chamaListChamaMembersResponse": {
+      "type": "object",
+      "properties": {
+        "chamas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/chamaChamaMember"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaListChamasRequest": {
+      "type": "object",
+      "properties": {
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "chamaListChamasResponse": {
+      "type": "object",
+      "properties": {
+        "chamas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/chamaChama"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaTrustPerson": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaUpdateChamaMemberRequest": {
+      "type": "object",
+      "properties": {
+        "chamaMember": {
+          "$ref": "#/definitions/chamaChamaMember"
+        }
+      }
+    },
+    "chamaUpdateChamaRequest": {
+      "type": "object",
+      "properties": {
+        "chama": {
+          "$ref": "#/definitions/chamaChama"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

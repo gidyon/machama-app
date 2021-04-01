@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package gidyon.chama;
+
+option go_package="github.com/gidyon/machama-app/pkg/api/chama";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+// import "google/type/date.proto";
+// import "google/type/timeofday.proto";
+import "google/api/field_behaviour.proto";
+// import "protoc-gen-swagger/options/annotations.proto";
+
+message Chama {
+    string chama_id = 1;
+    string name = 2;
+    string description = 3;
+    string status = 4;
+    bool active = 5;
+    string create_date = 6;
+}
+
+message TrustPerson {
+    string name = 1;
+    string email = 2;
+    string phone = 3;
+}
+
+message ChamaMember {
+    string member_id = 1;
+    string chama_id = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string email = 5;
+    string phone = 6;
+    string id_number = 7;
+    string residence = 8;
+    map<string, string> job_details = 9;
+    map<string, string> kyc = 10;
+    repeated TrustPerson beneficiaries =11;
+    repeated TrustPerson guarantees = 12;
+    bool active = 13;
+    string status = 14;
+    string register_date = 15;
+}
+
+message CreateChamaRequest {
+    Chama chama = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message UpdateChamaRequest {
+    Chama chama = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ListChamasRequest {
+    string page_token = 1;
+	int32 page_size = 2;
+}
+
+message ListChamasResponse {
+    repeated Chama chamas = 1;
+    string next_page_token = 2;
+}
+
+message GetChamaRequest {
+    string chama_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message CreateChamaMemberRequest {
+    ChamaMember chama_member = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message UpdateChamaMemberRequest {
+    ChamaMember chama_member = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message DeleteChamaMemberRequest {
+    string member_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ListChamaMembersRequest {
+    string page_token = 1;
+	int32 page_size = 2;
+}
+
+message ListChamaMembersResponse {
+    repeated ChamaMember chamas = 1;
+    string next_page_token = 2;
+}
+
+message GetChamaMemberRequest {
+    string member_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+service ChamaAPI {
+    rpc CreateChama (CreateChamaRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/chamas"
+			body: "*"
+		};
+    };
+
+    rpc UpdateChama (UpdateChamaRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			patch: "/api/chamas/{chama.chama_id}"
+			body: "*"
+		};
+    };
+
+    rpc ListChamas (ListChamasRequest) returns (ListChamasResponse) {
+        option (google.api.http) = {
+			get: "/api/chamas"
+			additional_bindings {
+				post: "/api/chamas:listChamasRequest"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetChama (GetChamaRequest) returns (Chama) {
+        option (google.api.http) = {
+			get: "/api/chamas/{chama_id}"
+		};
+    };
+
+    rpc CreateChamaMember (CreateChamaMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/chamamembers"
+			body: "*"
+		};
+    };
+
+    rpc UpdateChamaMember (UpdateChamaMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			patch: "/api/chamamembers/{chama_member.member_id}"
+			body: "*"
+		};
+    };
+
+    rpc DeleteChamaMember (DeleteChamaMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			delete: "/api/chamamembers/{member_id}"
+		};
+    };
+
+    rpc ListChamaMembers (ListChamaMembersRequest) returns (ListChamaMembersResponse) {
+        option (google.api.http) = {
+			get: "/api/chamamembers"
+			additional_bindings {
+				post: "/api/chamamembers:listChamaMembers"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetChamaMember (GetChamaMemberRequest) returns (ChamaMember) {
+        option (google.api.http) = {
+			get: "/api/chamamembers/{member_id}"
+		};
+    };
+}
