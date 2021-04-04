@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package gidyon.transaction;
+
+option go_package="github.com/gidyon/machama-app/pkg/api/transaction";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/api/field_behaviour.proto";
+// import "protoc-gen-swagger/options/annotations.proto";
+
+enum AccountType {
+    ACCOUNT_TYPE_UNSPECIFIED = 0;
+    SAVINGS_ACCOUNT = 1;
+}
+
+message ChamaAccount {
+    string account_id = 1;
+    string owner_id = 2;
+    string account_name = 3;
+    AccountType account_type = 4;
+    bool withdrawable = 5;
+    double available_amount = 6;
+    double total_deposited_amount = 7;
+    double total_withdrawn_amount = 8;
+    double last_deposited_amount = 9;
+    double last_withdrawn_amount = 10;
+    bool active = 11;
+    string created_date = 12;
+    string updated_date = 13;
+}
+
+message CreateChamaAccountRequest {
+    ChamaAccount chama_account = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ChamaAccountFilter {
+    repeated string account_ids = 1;
+    repeated string owner_ids = 2;
+    AccountType account_type = 3;
+    bool withdrawable = 4;
+    bool not_withdrawable = 5;
+}
+
+message ListChamaAccountsRequest {
+    ChamaAccountFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
+}
+
+message ListChamaAccountsResponse {
+    repeated ChamaAccount chama_accounts = 1;
+    string next_page_token = 2;
+}
+
+message GetChamaAccountRequest {
+    string account_id = 1 [(google.api.field_behavior) = REQUIRED];
+    string owner_id = 2;
+    string account_name = 3;
+}
+
+service ChamaAccountAPI {
+    rpc CreateChamaAccount (CreateChamaAccountRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/chamaaccounts"
+			body: "*"
+		};
+    };
+
+    rpc ListChamaAccounts (ListChamaAccountsRequest) returns (ListChamaAccountsResponse) {
+        option (google.api.http) = {
+			get: "/api/chamaaccounts"
+			additional_bindings {
+				post: "/api/chamaaccounts:listChamaAccounts"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetChamaAccount (GetChamaAccountRequest) returns (ChamaAccount) {
+        option (google.api.http) = {
+			get: "/api/chamaaccounts/{account_id}"
+		};
+    };
+}
+
+enum TransactionType {
+    TRANSACTION_TYPE_UNSPECIFIED = 0;
+    WITHDRAWAL = 1;
+    DEPOSIT = 2;
+}
+
+message Transaction {
+    string transaction_id = 1;
+    string actor_id = 2;
+    string account_id = 3;
+    string description = 4;
+    TransactionType transaction_type = 5;
+    double transaction_amount = 6;
+    int64 transaction_time_seconds = 7;
+}
+
+message DepositRequest {
+    string actor_id = 1 [(google.api.field_behavior) = REQUIRED];
+    string account_id = 2 [(google.api.field_behavior) = REQUIRED];
+    string description = 3 [(google.api.field_behavior) = REQUIRED];
+    double amount = 4 [(google.api.field_behavior) = REQUIRED];
+}
+
+message WithdrawRequest {
+    string actor_id = 1 [(google.api.field_behavior) = REQUIRED];
+    string account_id = 2 [(google.api.field_behavior) = REQUIRED];
+    string description = 3 [(google.api.field_behavior) = REQUIRED];
+    double amount = 4 [(google.api.field_behavior) = REQUIRED];
+}
+
+message TransactionFilter {
+    repeated string transaction_ids = 1;
+    repeated string actor_ids = 2;
+    repeated string account_ids = 3;
+    TransactionType transaction_type = 4;
+}
+
+message ListTransactionsRequest {
+    TransactionFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
+}
+
+message ListTransactionsResponse {
+    repeated Transaction transactions = 1;
+    string next_page_token = 2;
+}
+
+message GetTransactionRequest {
+    string transaction_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+service TransactionAPI {
+    rpc Deposit (DepositRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/transactions:deposit"
+			body: "*"
+		};
+    };
+
+    rpc Withdraw (WithdrawRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/transactions:withdraw"
+			body: "*"
+		};
+    };
+
+    rpc ListTransactions (ListTransactionsRequest) returns (ListTransactionsResponse) {
+        option (google.api.http) = {
+			get: "/api/transactions"
+			additional_bindings {
+				post: "/api/transactions:listTransactions"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetTransaction (GetTransactionRequest) returns (Transaction) {
+        option (google.api.http) = {
+			get: "/api/transactions/{transaction_id}"
+		};
+    };
+}

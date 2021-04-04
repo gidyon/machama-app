@@ -1,0 +1,684 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "transaction.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/chamaaccounts": {
+      "get": {
+        "operationId": "ChamaAccountAPI_ListChamaAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionListChamaAccountsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter.accountIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.ownerIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.accountType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "ACCOUNT_TYPE_UNSPECIFIED",
+              "SAVINGS_ACCOUNT"
+            ],
+            "default": "ACCOUNT_TYPE_UNSPECIFIED"
+          },
+          {
+            "name": "filter.withdrawable",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "filter.notWithdrawable",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "ChamaAccountAPI"
+        ]
+      },
+      "post": {
+        "operationId": "ChamaAccountAPI_CreateChamaAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionCreateChamaAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAccountAPI"
+        ]
+      }
+    },
+    "/api/chamaaccounts/{accountId}": {
+      "get": {
+        "operationId": "ChamaAccountAPI_GetChamaAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionChamaAccount"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ownerId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "accountName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ChamaAccountAPI"
+        ]
+      }
+    },
+    "/api/chamaaccounts:listChamaAccounts": {
+      "post": {
+        "operationId": "ChamaAccountAPI_ListChamaAccounts2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionListChamaAccountsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionListChamaAccountsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ChamaAccountAPI"
+        ]
+      }
+    },
+    "/api/transactions": {
+      "get": {
+        "operationId": "TransactionAPI_ListTransactions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionListTransactionsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter.transactionIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.actorIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.accountIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.transactionType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "TRANSACTION_TYPE_UNSPECIFIED",
+              "WITHDRAWAL",
+              "DEPOSIT"
+            ],
+            "default": "TRANSACTION_TYPE_UNSPECIFIED"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "TransactionAPI"
+        ]
+      }
+    },
+    "/api/transactions/{transactionId}": {
+      "get": {
+        "operationId": "TransactionAPI_GetTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionTransaction"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TransactionAPI"
+        ]
+      }
+    },
+    "/api/transactions:deposit": {
+      "post": {
+        "operationId": "TransactionAPI_Deposit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionDepositRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionAPI"
+        ]
+      }
+    },
+    "/api/transactions:listTransactions": {
+      "post": {
+        "operationId": "TransactionAPI_ListTransactions2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transactionListTransactionsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionListTransactionsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionAPI"
+        ]
+      }
+    },
+    "/api/transactions:withdraw": {
+      "post": {
+        "operationId": "TransactionAPI_Withdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transactionWithdrawRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TransactionAPI"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "transactionAccountType": {
+      "type": "string",
+      "enum": [
+        "ACCOUNT_TYPE_UNSPECIFIED",
+        "SAVINGS_ACCOUNT"
+      ],
+      "default": "ACCOUNT_TYPE_UNSPECIFIED"
+    },
+    "transactionChamaAccount": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "accountType": {
+          "$ref": "#/definitions/transactionAccountType"
+        },
+        "withdrawable": {
+          "type": "boolean"
+        },
+        "availableAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "totalDepositedAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "totalWithdrawnAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "lastDepositedAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "lastWithdrawnAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "createdDate": {
+          "type": "string"
+        },
+        "updatedDate": {
+          "type": "string"
+        }
+      }
+    },
+    "transactionChamaAccountFilter": {
+      "type": "object",
+      "properties": {
+        "accountIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ownerIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accountType": {
+          "$ref": "#/definitions/transactionAccountType"
+        },
+        "withdrawable": {
+          "type": "boolean"
+        },
+        "notWithdrawable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "transactionCreateChamaAccountRequest": {
+      "type": "object",
+      "properties": {
+        "chamaAccount": {
+          "$ref": "#/definitions/transactionChamaAccount"
+        }
+      }
+    },
+    "transactionDepositRequest": {
+      "type": "object",
+      "properties": {
+        "actorId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "transactionListChamaAccountsRequest": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/transactionChamaAccountFilter"
+        },
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "transactionListChamaAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "chamaAccounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transactionChamaAccount"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "transactionListTransactionsRequest": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/transactionTransactionFilter"
+        },
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "transactionListTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transactionTransaction"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "transactionTransaction": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "actorId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transactionType": {
+          "$ref": "#/definitions/transactionTransactionType"
+        },
+        "transactionAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "transactionTimeSeconds": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "transactionTransactionFilter": {
+      "type": "object",
+      "properties": {
+        "transactionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actorIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accountIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transactionType": {
+          "$ref": "#/definitions/transactionTransactionType"
+        }
+      }
+    },
+    "transactionTransactionType": {
+      "type": "string",
+      "enum": [
+        "TRANSACTION_TYPE_UNSPECIFIED",
+        "WITHDRAWAL",
+        "DEPOSIT"
+      ],
+      "default": "TRANSACTION_TYPE_UNSPECIFIED"
+    },
+    "transactionWithdrawRequest": {
+      "type": "object",
+      "properties": {
+        "actorId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  }
+}
