@@ -1,0 +1,735 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "loan.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/LoanProducts": {
+      "get": {
+        "operationId": "LoanProductAPI_ListLoanProducts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanListLoanProductsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter.chamaIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      },
+      "post": {
+        "operationId": "LoanProductAPI_CreateLoanProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanCreateLoanProductRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      }
+    },
+    "/api/LoanProducts/{loanPlan.productId}": {
+      "patch": {
+        "operationId": "LoanProductAPI_UpdateLoanProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "loanPlan.productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanUpdateLoanProductRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      }
+    },
+    "/api/LoanProducts/{productId}": {
+      "get": {
+        "operationId": "LoanProductAPI_GetLoanProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanLoanProduct"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      },
+      "delete": {
+        "operationId": "LoanProductAPI_DeleteLoanProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      }
+    },
+    "/api/LoanProducts:listLoanProducts": {
+      "post": {
+        "operationId": "LoanProductAPI_ListLoanProducts2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanListLoanProductsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanListLoanProductsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanProductAPI"
+        ]
+      }
+    },
+    "/api/loans": {
+      "get": {
+        "operationId": "LoanAPI_ListLoans",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanListLoansResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter.chamaIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter.productIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      },
+      "post": {
+        "operationId": "LoanAPI_CreateLoan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanCreateLoanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      }
+    },
+    "/api/loans/{loan.loanId}": {
+      "patch": {
+        "operationId": "LoanAPI_UpdateLoan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "loan.loanId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanUpdateLoanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      }
+    },
+    "/api/loans/{loanId}": {
+      "get": {
+        "operationId": "LoanAPI_GetLoan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanLoan"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      }
+    },
+    "/api/loans:approveLoan": {
+      "post": {
+        "operationId": "LoanAPI_ApproveLoan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanApproveLoanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      }
+    },
+    "/api/loans:listLoans": {
+      "post": {
+        "operationId": "LoanAPI_ListLoans2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/loanListLoansResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/loanListLoansRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoanAPI"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "loanApproveLoanRequest": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        }
+      }
+    },
+    "loanCreateLoanProductRequest": {
+      "type": "object",
+      "properties": {
+        "loanPlan": {
+          "$ref": "#/definitions/loanLoanProduct"
+        }
+      }
+    },
+    "loanCreateLoanRequest": {
+      "type": "object",
+      "properties": {
+        "loan": {
+          "$ref": "#/definitions/loanLoan"
+        }
+      }
+    },
+    "loanListLoanProductsRequest": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/loanLoanProductFilter"
+        },
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "loanListLoanProductsResponse": {
+      "type": "object",
+      "properties": {
+        "loanPlans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loanLoanProduct"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "loanListLoansRequest": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/loanLoanFilter"
+        },
+        "pageToken": {
+          "type": "string"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "loanListLoansResponse": {
+      "type": "object",
+      "properties": {
+        "loans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/loanLoan"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "loanLoan": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string"
+        },
+        "chamaId": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "memberId": {
+          "type": "string"
+        },
+        "loaneeNames": {
+          "type": "string"
+        },
+        "loaneePhone": {
+          "type": "string"
+        },
+        "loaneeEmail": {
+          "type": "string"
+        },
+        "nationalId": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "status": {
+          "$ref": "#/definitions/loanLoanStatus"
+        },
+        "durationDays": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "interestRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "loanAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "settledAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "penaltyAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "updatedDate": {
+          "type": "string"
+        },
+        "borrowedDate": {
+          "type": "string"
+        }
+      }
+    },
+    "loanLoanFilter": {
+      "type": "object",
+      "properties": {
+        "chamaIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "productIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "loanLoanProduct": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "chamaId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "loanDurationDays": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "interestRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "loanMinimumAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "loanMaximumAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "loanAccountBalance": {
+          "type": "number",
+          "format": "double"
+        },
+        "loanInterestBalance": {
+          "type": "number",
+          "format": "double"
+        },
+        "loanSettledBalance": {
+          "type": "number",
+          "format": "double"
+        },
+        "settledLoans": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "activeLoans": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalLoans": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "updatedDate": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string"
+        }
+      }
+    },
+    "loanLoanProductFilter": {
+      "type": "object",
+      "properties": {
+        "chamaIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "loanLoanStatus": {
+      "type": "string",
+      "enum": [
+        "WAITING_APPROVAL",
+        "APPROVED",
+        "FUNDS_WITHDRAWN_ACCOUNT",
+        "WAITING_FUNDS_TRANSFER",
+        "FUNDS_TRANSFERED"
+      ],
+      "default": "WAITING_APPROVAL"
+    },
+    "loanUpdateLoanProductRequest": {
+      "type": "object",
+      "properties": {
+        "loanPlan": {
+          "$ref": "#/definitions/loanLoanProduct"
+        }
+      }
+    },
+    "loanUpdateLoanRequest": {
+      "type": "object",
+      "properties": {
+        "loan": {
+          "$ref": "#/definitions/loanLoan"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

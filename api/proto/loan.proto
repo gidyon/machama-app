@@ -1,0 +1,200 @@
+syntax = "proto3";
+
+package gidyon.loan;
+
+option go_package="github.com/gidyon/machama-app/pkg/api/loan";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+// import "google/type/date.proto";
+// import "google/type/timeofday.proto";
+import "google/api/field_behaviour.proto";
+// import "protoc-gen-swagger/options/annotations.proto";
+
+message LoanProduct {
+    string product_id = 1;
+    string chama_id = 2;
+    string name = 3;
+    string description = 4;
+    int32 loan_duration_days = 5;
+    float interest_rate = 6;
+    double loan_minimum_amount = 7;
+    double loan_maximum_amount = 8;
+    double loan_account_balance = 9;
+    double loan_interest_balance = 10;
+    double loan_settled_balance = 11;
+    int32 settled_loans = 12;
+    int32 active_loans = 13;
+    int32 total_loans = 14;
+    string updated_date = 15;
+    string created_date = 16;
+}
+
+enum LoanStatus {
+    WAITING_APPROVAL = 0;
+    APPROVED = 1;
+    FUNDS_WITHDRAWN_ACCOUNT = 2;
+    WAITING_FUNDS_TRANSFER = 3;
+    FUNDS_TRANSFERED = 4;
+}
+
+message Loan {
+    string loan_id = 1;
+    string chama_id = 2;
+    string product_id = 3;
+    string member_id = 4;
+    string loanee_names = 5;
+    string loanee_phone = 6;
+    string loanee_email = 7;
+    string national_id = 8;
+    bool approved = 9;
+    LoanStatus status = 17;
+    int32 duration_days = 10;
+    float interest_rate = 11;
+    double loan_amount = 12;
+    double settled_amount = 13;
+    double penalty_amount = 14;
+    string updated_date = 15;
+    string borrowed_date = 16;
+}
+
+message CreateLoanProductRequest {
+    LoanProduct loan_plan = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message UpdateLoanProductRequest {
+    LoanProduct loan_plan = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message DeleteLoanProductRequest {
+    string product_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message LoanProductFilter {
+    repeated string chama_ids = 1;
+}
+
+message ListLoanProductsRequest {
+    LoanProductFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
+}
+
+message ListLoanProductsResponse {
+    repeated LoanProduct loan_plans = 1;
+    string next_page_token = 2;
+}
+
+message GetLoanProductRequest {
+    string product_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message CreateLoanRequest {
+    Loan loan = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message UpdateLoanRequest {
+    Loan loan = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message LoanFilter {
+    repeated string chama_ids = 1;
+    repeated string product_ids = 2;
+}
+
+message ListLoansRequest {
+    LoanFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
+}
+
+message ListLoansResponse {
+    repeated Loan loans = 1;
+    string next_page_token = 2;
+}
+
+message GetLoanRequest {
+    string loan_id = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ApproveLoanRequest {
+    string loan_id = 1 [(google.api.field_behavior) = REQUIRED];
+    string account_name = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+service LoanProductAPI {
+    rpc CreateLoanProduct (CreateLoanProductRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/LoanProducts"
+			body: "*"
+		};
+    };
+
+    rpc UpdateLoanProduct (UpdateLoanProductRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			patch: "/api/LoanProducts/{loan_plan.product_id}"
+			body: "*"
+		};
+    };
+
+    rpc DeleteLoanProduct (DeleteLoanProductRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			delete: "/api/LoanProducts/{product_id}"
+		};
+    };
+
+    rpc ListLoanProducts (ListLoanProductsRequest) returns (ListLoanProductsResponse) {
+        option (google.api.http) = {
+			get: "/api/LoanProducts"
+			additional_bindings {
+				post: "/api/LoanProducts:listLoanProducts"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetLoanProduct (GetLoanProductRequest) returns (LoanProduct) {
+        option (google.api.http) = {
+			get: "/api/LoanProducts/{product_id}"
+		};
+    };
+}
+
+service LoanAPI {
+    rpc CreateLoan (CreateLoanRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/loans"
+			body: "*"
+		};
+    };
+
+    rpc UpdateLoan (UpdateLoanRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			patch: "/api/loans/{loan.loan_id}"
+			body: "*"
+		};
+    };
+
+    rpc ListLoans (ListLoansRequest) returns (ListLoansResponse) {
+        option (google.api.http) = {
+			get: "/api/loans"
+			additional_bindings {
+				post: "/api/loans:listLoans"
+				body: "*"
+			}
+		};
+    };
+
+    rpc GetLoan (GetLoanRequest) returns (Loan) {
+        option (google.api.http) = {
+			get: "/api/loans/{loan_id}"
+		};
+    };
+
+    rpc ApproveLoan (ApproveLoanRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+			post: "/api/loans:approveLoan"
+			body: "*"
+		};
+    };
+}
