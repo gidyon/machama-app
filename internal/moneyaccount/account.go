@@ -219,13 +219,17 @@ func (moneyAccountAPI *moneyAccountAPIServer) GetChamaAccount(
 	switch {
 	case req == nil:
 		return nil, errs.MissingField("request body")
-	case req.AccountId == "":
+	case req.AccountId == "" && (req.OwnerId == "" || req.AccountName == ""):
 		return nil, errs.MissingField("account id")
 	}
 
 	db := &models.ChamaAccount{}
 
-	err = moneyAccountAPI.SQLDB.First(db, "id = ?", req.AccountId).Error
+	if req.AccountId != "" {
+		err = moneyAccountAPI.SQLDB.First(db, "id = ?", req.AccountId).Error
+	} else {
+		err = moneyAccountAPI.SQLDB.First(db, "owner_id = ? AND account_name = ?", req.OwnerId, req.AccountName).Error
+	}
 	switch {
 	case err == nil:
 	case errors.Is(err, gorm.ErrRecordNotFound):

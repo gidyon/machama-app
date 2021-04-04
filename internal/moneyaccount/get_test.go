@@ -50,7 +50,7 @@ var _ = Describe("GetChamaAccount", func() {
 	})
 
 	Describe("GetChamaAccount with well formed request", func() {
-		var chamaMemberID string
+		var chamaMemberID, ownerID, accountName string
 
 		Context("Lets create chama account first", func() {
 			It("should succeed", func() {
@@ -60,13 +60,25 @@ var _ = Describe("GetChamaAccount", func() {
 				Expect(ChamaAccountAPIServer.SQLDB.Create(chamaMemberDB).Error).ShouldNot(HaveOccurred())
 
 				chamaMemberID = fmt.Sprint(chamaMemberDB.ID)
+				ownerID = chamaMemberDB.OwnerID
+				accountName = chamaMemberDB.AccountName
 			})
 		})
 
 		Describe("Getting the chama account", func() {
-			It("should succeed", func() {
+			It("should succeed when account id is present", func() {
 				getRes, err := ChamaAccountAPI.GetChamaAccount(ctx, &transaction.GetChamaAccountRequest{
 					AccountId: chamaMemberID,
+				})
+				Expect(err).ShouldNot(HaveOccurred())
+				Expect(getRes).ShouldNot(BeNil())
+				Expect(status.Code(err)).Should(Equal(codes.OK))
+			})
+
+			It("should succeed when owner id and account_name is provided", func() {
+				getRes, err := ChamaAccountAPI.GetChamaAccount(ctx, &transaction.GetChamaAccountRequest{
+					OwnerId:     ownerID,
+					AccountName: accountName,
 				})
 				Expect(err).ShouldNot(HaveOccurred())
 				Expect(getRes).ShouldNot(BeNil())
