@@ -80,6 +80,16 @@ func (transactionAPI *transactionAPIServer) Deposit(ctx context.Context, req *tr
 		return nil, errs.IncorrectVal("amount")
 	}
 
+	// Confirm account exist
+	err = transactionAPI.SQLDB.First(&models.ChamaAccount{}, "id = ?", req.AccountId).Error
+	switch {
+	case err == nil:
+	case errors.Is(err, gorm.ErrRecordNotFound):
+		return nil, errs.DoesExist("chama account", req.AccountId)
+	default:
+		return nil, errs.FailedToFind("chama account", err)
+	}
+
 	tx := transactionAPI.SQLDB.Begin()
 	defer func() {
 		if r := recover(); r != nil {
@@ -148,6 +158,16 @@ func (transactionAPI *transactionAPIServer) Withdraw(ctx context.Context, req *t
 		return nil, errs.IncorrectVal("amount")
 	}
 
+	// Confirm account exist
+	err = transactionAPI.SQLDB.First(&models.ChamaAccount{}, "id = ?", req.AccountId).Error
+	switch {
+	case err == nil:
+	case errors.Is(err, gorm.ErrRecordNotFound):
+		return nil, errs.DoesExist("chama account", req.AccountId)
+	default:
+		return nil, errs.FailedToFind("chama account", err)
+	}
+
 	tx := transactionAPI.SQLDB.Begin()
 	defer func() {
 		if r := recover(); r != nil {
@@ -172,15 +192,20 @@ func (transactionAPI *transactionAPIServer) Withdraw(ctx context.Context, req *t
 	}
 
 	// Withdraw amount
-	err = transactionAPI.SQLDB.Model(&models.ChamaAccount{}).Where("id = ? and available_amount >= ?", req.AccountId, req.Amount).
+	db := transactionAPI.SQLDB.Model(&models.ChamaAccount{}).
+		Where("id = ? AND available_amount >= ? AND withdrawable", req.AccountId, req.Amount, true).
 		Updates(map[string]interface{}{
 			"total_withdrawn_amount": gorm.Expr("total_deposited_amount + ?", req.Amount),
 			"available_amount":       gorm.Expr("available_amount - ?", req.Amount),
 			"last_withdrawn_amount":  req.Amount,
-		}).Error
-	if err != nil {
+		})
+	if db.Error != nil {
 		tx.Rollback()
-		return nil, errs.FailedToUpdate("account balance", err)
+		return nil, errs.FailedToUpdate("account balance", db.Error)
+	}
+
+	if db.RowsAffected == 0 {
+		return nil, errs.WrapMessage(codes.FailedPrecondition, "insufficient amount")
 	}
 
 	// Commit transaction
