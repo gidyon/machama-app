@@ -1,0 +1,31 @@
+serviceName: "MACHAMA APP"
+httpPort: 9090
+startupSleepSeconds: 10
+logLevel: -1
+security:
+  tlsCert: /home/gideon/Desktop/Go APIs/machama-app/certs/localhost/cert.pem
+  tlsKey: /home/gideon/Desktop/Go APIs/machama-app/certs/localhost/key.pem
+  serverName: localhost
+  insecure: true
+databases:
+- required: true
+  type: sqlDatabase
+  address: localhost:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: mysql
+    dialect: mysql
+    orm: gorm
+- required: true
+  type: redisDatabase
+  address: localhost:6379
+  metadata:
+    name: redis
+externalServices:
+  - name: sms
+    required: true
+    address: localhost:8080
+    k8service: true
+    insecure: true
