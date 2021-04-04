@@ -59,11 +59,11 @@ message Loan {
 }
 
 message CreateLoanProductRequest {
-    LoanProduct loan_plan = 1 [(google.api.field_behavior) = REQUIRED];
+    LoanProduct loan_product = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 message UpdateLoanProductRequest {
-    LoanProduct loan_plan = 1 [(google.api.field_behavior) = REQUIRED];
+    LoanProduct loan_product = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 message DeleteLoanProductRequest {
@@ -81,7 +81,7 @@ message ListLoanProductsRequest {
 }
 
 message ListLoanProductsResponse {
-    repeated LoanProduct loan_plans = 1;
+    repeated LoanProduct loan_products = 1;
     string next_page_token = 2;
 }
 
@@ -132,7 +132,7 @@ service LoanProductAPI {
 
     rpc UpdateLoanProduct (UpdateLoanProductRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			patch: "/api/LoanProducts/{loan_plan.product_id}"
+			patch: "/api/LoanProducts/{loan_product.product_id}"
 			body: "*"
 		};
     };

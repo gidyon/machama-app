@@ -84,14 +84,14 @@ func request_LoanProductAPI_UpdateLoanProduct_0(ctx context.Context, marshaler r
 		_   = err
 	)
 
-	val, ok = pathParams["loan_plan.product_id"]
+	val, ok = pathParams["loan_product.product_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "loan_plan.product_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "loan_product.product_id")
 	}
 
-	err = runtime.PopulateFieldFromPath(&protoReq, "loan_plan.product_id", val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "loan_product.product_id", val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "loan_plan.product_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "loan_product.product_id", err)
 	}
 
 	msg, err := client.UpdateLoanProduct(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -118,14 +118,14 @@ func local_request_LoanProductAPI_UpdateLoanProduct_0(ctx context.Context, marsh
 		_   = err
 	)
 
-	val, ok = pathParams["loan_plan.product_id"]
+	val, ok = pathParams["loan_product.product_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "loan_plan.product_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "loan_product.product_id")
 	}
 
-	err = runtime.PopulateFieldFromPath(&protoReq, "loan_plan.product_id", val)
+	err = runtime.PopulateFieldFromPath(&protoReq, "loan_product.product_id", val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "loan_plan.product_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "loan_product.product_id", err)
 	}
 
 	msg, err := server.UpdateLoanProduct(ctx, &protoReq)
@@ -1023,7 +1023,7 @@ func RegisterLoanProductAPIHandlerClient(ctx context.Context, mux *runtime.Serve
 var (
 	pattern_LoanProductAPI_CreateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "LoanProducts"}, ""))
 
-	pattern_LoanProductAPI_UpdateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "loan_plan.product_id"}, ""))
+	pattern_LoanProductAPI_UpdateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "loan_product.product_id"}, ""))
 
 	pattern_LoanProductAPI_DeleteLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "product_id"}, ""))
 
