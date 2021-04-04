@@ -13,11 +13,14 @@ import "google/api/field_behaviour.proto";
 
 message Chama {
     string chama_id = 1;
-    string name = 2;
-    string description = 3;
-    string status = 4;
-    bool active = 5;
-    string create_date = 6;
+    string creator_id = 2;
+    string name = 3;
+    string description = 4;
+    string status = 5;
+    double account_balance = 6;
+    bool active = 7;
+    string updated_date = 8;
+    string created_date = 9;
 }
 
 message TrustPerson {
@@ -41,7 +44,8 @@ message ChamaMember {
     repeated TrustPerson guarantees = 12;
     bool active = 13;
     string status = 14;
-    string register_date = 15;
+    string updated_date = 15;
+    string register_date = 16;
 }
 
 message CreateChamaRequest {
@@ -52,9 +56,14 @@ message UpdateChamaRequest {
     Chama chama = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+message ChamaFilter {
+    repeated string creator_ids = 1;
+}
+
 message ListChamasRequest {
-    string page_token = 1;
-	int32 page_size = 2;
+    ChamaFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
 }
 
 message ListChamasResponse {
@@ -78,13 +87,18 @@ message DeleteChamaMemberRequest {
     string member_id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
+message ChamaMemberFilter {
+    repeated string chama_ids = 1;
+}
+
 message ListChamaMembersRequest {
-    string page_token = 1;
-	int32 page_size = 2;
+    ChamaMemberFilter filter = 1;
+    string page_token = 2;
+	int32 page_size = 3;
 }
 
 message ListChamaMembersResponse {
-    repeated ChamaMember chamas = 1;
+    repeated ChamaMember chama_members = 1;
     string next_page_token = 2;
 }
 
@@ -122,7 +136,9 @@ service ChamaAPI {
 			get: "/api/chamas/{chama_id}"
 		};
     };
+}
 
+service ChamaMemberAPI {
     rpc CreateChamaMember (CreateChamaMemberRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
 			post: "/api/chamamembers"

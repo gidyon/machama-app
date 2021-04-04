@@ -22,11 +22,6 @@ type ChamaAPIClient interface {
 	UpdateChama(ctx context.Context, in *UpdateChamaRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ListChamas(ctx context.Context, in *ListChamasRequest, opts ...grpc.CallOption) (*ListChamasResponse, error)
 	GetChama(ctx context.Context, in *GetChamaRequest, opts ...grpc.CallOption) (*Chama, error)
-	CreateChamaMember(ctx context.Context, in *CreateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	UpdateChamaMember(ctx context.Context, in *UpdateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	DeleteChamaMember(ctx context.Context, in *DeleteChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ListChamaMembers(ctx context.Context, in *ListChamaMembersRequest, opts ...grpc.CallOption) (*ListChamaMembersResponse, error)
-	GetChamaMember(ctx context.Context, in *GetChamaMemberRequest, opts ...grpc.CallOption) (*ChamaMember, error)
 }
 
 type chamaAPIClient struct {
@@ -73,51 +68,6 @@ func (c *chamaAPIClient) GetChama(ctx context.Context, in *GetChamaRequest, opts
 	return out, nil
 }
 
-func (c *chamaAPIClient) CreateChamaMember(ctx context.Context, in *CreateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaAPI/CreateChamaMember", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chamaAPIClient) UpdateChamaMember(ctx context.Context, in *UpdateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaAPI/UpdateChamaMember", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chamaAPIClient) DeleteChamaMember(ctx context.Context, in *DeleteChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaAPI/DeleteChamaMember", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chamaAPIClient) ListChamaMembers(ctx context.Context, in *ListChamaMembersRequest, opts ...grpc.CallOption) (*ListChamaMembersResponse, error) {
-	out := new(ListChamaMembersResponse)
-	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaAPI/ListChamaMembers", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chamaAPIClient) GetChamaMember(ctx context.Context, in *GetChamaMemberRequest, opts ...grpc.CallOption) (*ChamaMember, error) {
-	out := new(ChamaMember)
-	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaAPI/GetChamaMember", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ChamaAPIServer is the server API for ChamaAPI service.
 // All implementations must embed UnimplementedChamaAPIServer
 // for forward compatibility
@@ -126,11 +76,6 @@ type ChamaAPIServer interface {
 	UpdateChama(context.Context, *UpdateChamaRequest) (*emptypb.Empty, error)
 	ListChamas(context.Context, *ListChamasRequest) (*ListChamasResponse, error)
 	GetChama(context.Context, *GetChamaRequest) (*Chama, error)
-	CreateChamaMember(context.Context, *CreateChamaMemberRequest) (*emptypb.Empty, error)
-	UpdateChamaMember(context.Context, *UpdateChamaMemberRequest) (*emptypb.Empty, error)
-	DeleteChamaMember(context.Context, *DeleteChamaMemberRequest) (*emptypb.Empty, error)
-	ListChamaMembers(context.Context, *ListChamaMembersRequest) (*ListChamaMembersResponse, error)
-	GetChamaMember(context.Context, *GetChamaMemberRequest) (*ChamaMember, error)
 	mustEmbedUnimplementedChamaAPIServer()
 }
 
@@ -149,21 +94,6 @@ func (UnimplementedChamaAPIServer) ListChamas(context.Context, *ListChamasReques
 }
 func (UnimplementedChamaAPIServer) GetChama(context.Context, *GetChamaRequest) (*Chama, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetChama not implemented")
-}
-func (UnimplementedChamaAPIServer) CreateChamaMember(context.Context, *CreateChamaMemberRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateChamaMember not implemented")
-}
-func (UnimplementedChamaAPIServer) UpdateChamaMember(context.Context, *UpdateChamaMemberRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateChamaMember not implemented")
-}
-func (UnimplementedChamaAPIServer) DeleteChamaMember(context.Context, *DeleteChamaMemberRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteChamaMember not implemented")
-}
-func (UnimplementedChamaAPIServer) ListChamaMembers(context.Context, *ListChamaMembersRequest) (*ListChamaMembersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListChamaMembers not implemented")
-}
-func (UnimplementedChamaAPIServer) GetChamaMember(context.Context, *GetChamaMemberRequest) (*ChamaMember, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetChamaMember not implemented")
 }
 func (UnimplementedChamaAPIServer) mustEmbedUnimplementedChamaAPIServer() {}
 
@@ -250,96 +180,6 @@ func _ChamaAPI_GetChama_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ChamaAPI_CreateChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateChamaMemberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChamaAPIServer).CreateChamaMember(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gidyon.chama.ChamaAPI/CreateChamaMember",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChamaAPIServer).CreateChamaMember(ctx, req.(*CreateChamaMemberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChamaAPI_UpdateChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateChamaMemberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChamaAPIServer).UpdateChamaMember(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gidyon.chama.ChamaAPI/UpdateChamaMember",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChamaAPIServer).UpdateChamaMember(ctx, req.(*UpdateChamaMemberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChamaAPI_DeleteChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteChamaMemberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChamaAPIServer).DeleteChamaMember(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gidyon.chama.ChamaAPI/DeleteChamaMember",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChamaAPIServer).DeleteChamaMember(ctx, req.(*DeleteChamaMemberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChamaAPI_ListChamaMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListChamaMembersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChamaAPIServer).ListChamaMembers(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gidyon.chama.ChamaAPI/ListChamaMembers",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChamaAPIServer).ListChamaMembers(ctx, req.(*ListChamaMembersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ChamaAPI_GetChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetChamaMemberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChamaAPIServer).GetChamaMember(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gidyon.chama.ChamaAPI/GetChamaMember",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChamaAPIServer).GetChamaMember(ctx, req.(*GetChamaMemberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _ChamaAPI_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "gidyon.chama.ChamaAPI",
 	HandlerType: (*ChamaAPIServer)(nil),
@@ -360,25 +200,232 @@ var _ChamaAPI_serviceDesc = grpc.ServiceDesc{
 			MethodName: "GetChama",
 			Handler:    _ChamaAPI_GetChama_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "chama.proto",
+}
+
+// ChamaMemberAPIClient is the client API for ChamaMemberAPI service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ChamaMemberAPIClient interface {
+	CreateChamaMember(ctx context.Context, in *CreateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	UpdateChamaMember(ctx context.Context, in *UpdateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DeleteChamaMember(ctx context.Context, in *DeleteChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	ListChamaMembers(ctx context.Context, in *ListChamaMembersRequest, opts ...grpc.CallOption) (*ListChamaMembersResponse, error)
+	GetChamaMember(ctx context.Context, in *GetChamaMemberRequest, opts ...grpc.CallOption) (*ChamaMember, error)
+}
+
+type chamaMemberAPIClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewChamaMemberAPIClient(cc grpc.ClientConnInterface) ChamaMemberAPIClient {
+	return &chamaMemberAPIClient{cc}
+}
+
+func (c *chamaMemberAPIClient) CreateChamaMember(ctx context.Context, in *CreateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaMemberAPI/CreateChamaMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chamaMemberAPIClient) UpdateChamaMember(ctx context.Context, in *UpdateChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaMemberAPI/UpdateChamaMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chamaMemberAPIClient) DeleteChamaMember(ctx context.Context, in *DeleteChamaMemberRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaMemberAPI/DeleteChamaMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chamaMemberAPIClient) ListChamaMembers(ctx context.Context, in *ListChamaMembersRequest, opts ...grpc.CallOption) (*ListChamaMembersResponse, error) {
+	out := new(ListChamaMembersResponse)
+	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaMemberAPI/ListChamaMembers", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chamaMemberAPIClient) GetChamaMember(ctx context.Context, in *GetChamaMemberRequest, opts ...grpc.CallOption) (*ChamaMember, error) {
+	out := new(ChamaMember)
+	err := c.cc.Invoke(ctx, "/gidyon.chama.ChamaMemberAPI/GetChamaMember", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ChamaMemberAPIServer is the server API for ChamaMemberAPI service.
+// All implementations must embed UnimplementedChamaMemberAPIServer
+// for forward compatibility
+type ChamaMemberAPIServer interface {
+	CreateChamaMember(context.Context, *CreateChamaMemberRequest) (*emptypb.Empty, error)
+	UpdateChamaMember(context.Context, *UpdateChamaMemberRequest) (*emptypb.Empty, error)
+	DeleteChamaMember(context.Context, *DeleteChamaMemberRequest) (*emptypb.Empty, error)
+	ListChamaMembers(context.Context, *ListChamaMembersRequest) (*ListChamaMembersResponse, error)
+	GetChamaMember(context.Context, *GetChamaMemberRequest) (*ChamaMember, error)
+	mustEmbedUnimplementedChamaMemberAPIServer()
+}
+
+// UnimplementedChamaMemberAPIServer must be embedded to have forward compatible implementations.
+type UnimplementedChamaMemberAPIServer struct {
+}
+
+func (UnimplementedChamaMemberAPIServer) CreateChamaMember(context.Context, *CreateChamaMemberRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateChamaMember not implemented")
+}
+func (UnimplementedChamaMemberAPIServer) UpdateChamaMember(context.Context, *UpdateChamaMemberRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateChamaMember not implemented")
+}
+func (UnimplementedChamaMemberAPIServer) DeleteChamaMember(context.Context, *DeleteChamaMemberRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteChamaMember not implemented")
+}
+func (UnimplementedChamaMemberAPIServer) ListChamaMembers(context.Context, *ListChamaMembersRequest) (*ListChamaMembersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListChamaMembers not implemented")
+}
+func (UnimplementedChamaMemberAPIServer) GetChamaMember(context.Context, *GetChamaMemberRequest) (*ChamaMember, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetChamaMember not implemented")
+}
+func (UnimplementedChamaMemberAPIServer) mustEmbedUnimplementedChamaMemberAPIServer() {}
+
+// UnsafeChamaMemberAPIServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ChamaMemberAPIServer will
+// result in compilation errors.
+type UnsafeChamaMemberAPIServer interface {
+	mustEmbedUnimplementedChamaMemberAPIServer()
+}
+
+func RegisterChamaMemberAPIServer(s grpc.ServiceRegistrar, srv ChamaMemberAPIServer) {
+	s.RegisterService(&_ChamaMemberAPI_serviceDesc, srv)
+}
+
+func _ChamaMemberAPI_CreateChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateChamaMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChamaMemberAPIServer).CreateChamaMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gidyon.chama.ChamaMemberAPI/CreateChamaMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChamaMemberAPIServer).CreateChamaMember(ctx, req.(*CreateChamaMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ChamaMemberAPI_UpdateChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateChamaMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChamaMemberAPIServer).UpdateChamaMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gidyon.chama.ChamaMemberAPI/UpdateChamaMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChamaMemberAPIServer).UpdateChamaMember(ctx, req.(*UpdateChamaMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ChamaMemberAPI_DeleteChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteChamaMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChamaMemberAPIServer).DeleteChamaMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gidyon.chama.ChamaMemberAPI/DeleteChamaMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChamaMemberAPIServer).DeleteChamaMember(ctx, req.(*DeleteChamaMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ChamaMemberAPI_ListChamaMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListChamaMembersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChamaMemberAPIServer).ListChamaMembers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gidyon.chama.ChamaMemberAPI/ListChamaMembers",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChamaMemberAPIServer).ListChamaMembers(ctx, req.(*ListChamaMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ChamaMemberAPI_GetChamaMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetChamaMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChamaMemberAPIServer).GetChamaMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gidyon.chama.ChamaMemberAPI/GetChamaMember",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChamaMemberAPIServer).GetChamaMember(ctx, req.(*GetChamaMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ChamaMemberAPI_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "gidyon.chama.ChamaMemberAPI",
+	HandlerType: (*ChamaMemberAPIServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateChamaMember",
-			Handler:    _ChamaAPI_CreateChamaMember_Handler,
+			Handler:    _ChamaMemberAPI_CreateChamaMember_Handler,
 		},
 		{
 			MethodName: "UpdateChamaMember",
-			Handler:    _ChamaAPI_UpdateChamaMember_Handler,
+			Handler:    _ChamaMemberAPI_UpdateChamaMember_Handler,
 		},
 		{
 			MethodName: "DeleteChamaMember",
-			Handler:    _ChamaAPI_DeleteChamaMember_Handler,
+			Handler:    _ChamaMemberAPI_DeleteChamaMember_Handler,
 		},
 		{
 			MethodName: "ListChamaMembers",
-			Handler:    _ChamaAPI_ListChamaMembers_Handler,
+			Handler:    _ChamaMemberAPI_ListChamaMembers_Handler,
 		},
 		{
 			MethodName: "GetChamaMember",
-			Handler:    _ChamaAPI_GetChamaMember_Handler,
+			Handler:    _ChamaMemberAPI_GetChamaMember_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

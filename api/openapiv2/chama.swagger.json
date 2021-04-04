@@ -13,7 +13,7 @@
   "paths": {
     "/api/chamamembers": {
       "get": {
-        "operationId": "ChamaAPI_ListChamaMembers",
+        "operationId": "ChamaMemberAPI_ListChamaMembers",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -30,6 +30,16 @@
         },
         "parameters": [
           {
+            "name": "filter.chamaIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
             "name": "pageToken",
             "in": "query",
             "required": false,
@@ -44,11 +54,11 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       },
       "post": {
-        "operationId": "ChamaAPI_CreateChamaMember",
+        "operationId": "ChamaMemberAPI_CreateChamaMember",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -74,13 +84,13 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       }
     },
     "/api/chamamembers/{chamaMember.memberId}": {
       "patch": {
-        "operationId": "ChamaAPI_UpdateChamaMember",
+        "operationId": "ChamaMemberAPI_UpdateChamaMember",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -112,13 +122,13 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       }
     },
     "/api/chamamembers/{memberId}": {
       "get": {
-        "operationId": "ChamaAPI_GetChamaMember",
+        "operationId": "ChamaMemberAPI_GetChamaMember",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -142,11 +152,11 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       },
       "delete": {
-        "operationId": "ChamaAPI_DeleteChamaMember",
+        "operationId": "ChamaMemberAPI_DeleteChamaMember",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -170,13 +180,13 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       }
     },
     "/api/chamamembers:listChamaMembers": {
       "post": {
-        "operationId": "ChamaAPI_ListChamaMembers2",
+        "operationId": "ChamaMemberAPI_ListChamaMembers2",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -202,7 +212,7 @@
           }
         ],
         "tags": [
-          "ChamaAPI"
+          "ChamaMemberAPI"
         ]
       }
     },
@@ -224,6 +234,16 @@
           }
         },
         "parameters": [
+          {
+            "name": "filter.creatorIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
           {
             "name": "pageToken",
             "in": "query",
@@ -381,6 +401,9 @@
         "chamaId": {
           "type": "string"
         },
+        "creatorId": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -390,11 +413,29 @@
         "status": {
           "type": "string"
         },
+        "accountBalance": {
+          "type": "number",
+          "format": "double"
+        },
         "active": {
           "type": "boolean"
         },
-        "createDate": {
+        "updatedDate": {
           "type": "string"
+        },
+        "createdDate": {
+          "type": "string"
+        }
+      }
+    },
+    "chamaChamaFilter": {
+      "type": "object",
+      "properties": {
+        "creatorIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -455,8 +496,22 @@
         "status": {
           "type": "string"
         },
+        "updatedDate": {
+          "type": "string"
+        },
         "registerDate": {
           "type": "string"
+        }
+      }
+    },
+    "chamaChamaMemberFilter": {
+      "type": "object",
+      "properties": {
+        "chamaIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -479,6 +534,9 @@
     "chamaListChamaMembersRequest": {
       "type": "object",
       "properties": {
+        "filter": {
+          "$ref": "#/definitions/chamaChamaMemberFilter"
+        },
         "pageToken": {
           "type": "string"
         },
@@ -491,7 +549,7 @@
     "chamaListChamaMembersResponse": {
       "type": "object",
       "properties": {
-        "chamas": {
+        "chamaMembers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/chamaChamaMember"
@@ -505,6 +563,9 @@
     "chamaListChamasRequest": {
       "type": "object",
       "properties": {
+        "filter": {
+          "$ref": "#/definitions/chamaChamaFilter"
+        },
         "pageToken": {
           "type": "string"
         },

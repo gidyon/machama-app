@@ -255,7 +255,7 @@ func local_request_ChamaAPI_GetChama_0(ctx context.Context, marshaler runtime.Ma
 
 }
 
-func request_ChamaAPI_CreateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_CreateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -272,7 +272,7 @@ func request_ChamaAPI_CreateChamaMember_0(ctx context.Context, marshaler runtime
 
 }
 
-func local_request_ChamaAPI_CreateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_CreateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -289,7 +289,7 @@ func local_request_ChamaAPI_CreateChamaMember_0(ctx context.Context, marshaler r
 
 }
 
-func request_ChamaAPI_UpdateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_UpdateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UpdateChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -323,7 +323,7 @@ func request_ChamaAPI_UpdateChamaMember_0(ctx context.Context, marshaler runtime
 
 }
 
-func local_request_ChamaAPI_UpdateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_UpdateChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq UpdateChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -357,7 +357,7 @@ func local_request_ChamaAPI_UpdateChamaMember_0(ctx context.Context, marshaler r
 
 }
 
-func request_ChamaAPI_DeleteChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_DeleteChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -383,7 +383,7 @@ func request_ChamaAPI_DeleteChamaMember_0(ctx context.Context, marshaler runtime
 
 }
 
-func local_request_ChamaAPI_DeleteChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_DeleteChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -410,17 +410,17 @@ func local_request_ChamaAPI_DeleteChamaMember_0(ctx context.Context, marshaler r
 }
 
 var (
-	filter_ChamaAPI_ListChamaMembers_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ChamaMemberAPI_ListChamaMembers_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ChamaAPI_ListChamaMembers_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_ListChamaMembers_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListChamaMembersRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ChamaAPI_ListChamaMembers_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ChamaMemberAPI_ListChamaMembers_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -429,14 +429,14 @@ func request_ChamaAPI_ListChamaMembers_0(ctx context.Context, marshaler runtime.
 
 }
 
-func local_request_ChamaAPI_ListChamaMembers_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_ListChamaMembers_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListChamaMembersRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ChamaAPI_ListChamaMembers_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ChamaMemberAPI_ListChamaMembers_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -445,7 +445,7 @@ func local_request_ChamaAPI_ListChamaMembers_0(ctx context.Context, marshaler ru
 
 }
 
-func request_ChamaAPI_ListChamaMembers_1(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_ListChamaMembers_1(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListChamaMembersRequest
 	var metadata runtime.ServerMetadata
 
@@ -462,7 +462,7 @@ func request_ChamaAPI_ListChamaMembers_1(ctx context.Context, marshaler runtime.
 
 }
 
-func local_request_ChamaAPI_ListChamaMembers_1(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_ListChamaMembers_1(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListChamaMembersRequest
 	var metadata runtime.ServerMetadata
 
@@ -479,7 +479,7 @@ func local_request_ChamaAPI_ListChamaMembers_1(ctx context.Context, marshaler ru
 
 }
 
-func request_ChamaAPI_GetChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_ChamaMemberAPI_GetChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, client ChamaMemberAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -505,7 +505,7 @@ func request_ChamaAPI_GetChamaMember_0(ctx context.Context, marshaler runtime.Ma
 
 }
 
-func local_request_ChamaAPI_GetChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_ChamaMemberAPI_GetChamaMember_0(ctx context.Context, marshaler runtime.Marshaler, server ChamaMemberAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetChamaMemberRequest
 	var metadata runtime.ServerMetadata
 
@@ -652,18 +652,27 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 
 	})
 
-	mux.Handle("POST", pattern_ChamaAPI_CreateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	return nil
+}
+
+// RegisterChamaMemberAPIHandlerServer registers the http handlers for service ChamaMemberAPI to "mux".
+// UnaryRPC     :call ChamaMemberAPIServer directly.
+// StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterChamaMemberAPIHandlerFromEndpoint instead.
+func RegisterChamaMemberAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ChamaMemberAPIServer) error {
+
+	mux.Handle("POST", pattern_ChamaMemberAPI_CreateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/CreateChamaMember")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/CreateChamaMember")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_CreateChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_CreateChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -671,22 +680,22 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_CreateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_CreateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PATCH", pattern_ChamaAPI_UpdateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PATCH", pattern_ChamaMemberAPI_UpdateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/UpdateChamaMember")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/UpdateChamaMember")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_UpdateChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_UpdateChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -694,22 +703,22 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_UpdateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_UpdateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_ChamaAPI_DeleteChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ChamaMemberAPI_DeleteChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/DeleteChamaMember")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/DeleteChamaMember")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_DeleteChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_DeleteChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -717,22 +726,22 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_DeleteChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_DeleteChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ChamaAPI_ListChamaMembers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ChamaMemberAPI_ListChamaMembers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/ListChamaMembers")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/ListChamaMembers")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_ListChamaMembers_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_ListChamaMembers_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -740,22 +749,22 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_ListChamaMembers_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_ListChamaMembers_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_ChamaAPI_ListChamaMembers_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ChamaMemberAPI_ListChamaMembers_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/ListChamaMembers")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/ListChamaMembers")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_ListChamaMembers_1(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_ListChamaMembers_1(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -763,22 +772,22 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_ListChamaMembers_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_ListChamaMembers_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ChamaAPI_GetChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ChamaMemberAPI_GetChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/GetChamaMember")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/GetChamaMember")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ChamaAPI_GetChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ChamaMemberAPI_GetChamaMember_0(rctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -786,7 +795,7 @@ func RegisterChamaAPIHandlerServer(ctx context.Context, mux *runtime.ServeMux, s
 			return
 		}
 
-		forward_ChamaAPI_GetChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ChamaMemberAPI_GetChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -931,126 +940,6 @@ func RegisterChamaAPIHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 
 	})
 
-	mux.Handle("POST", pattern_ChamaAPI_CreateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/CreateChamaMember")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_CreateChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_CreateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("PATCH", pattern_ChamaAPI_UpdateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/UpdateChamaMember")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_UpdateChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_UpdateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("DELETE", pattern_ChamaAPI_DeleteChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/DeleteChamaMember")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_DeleteChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_DeleteChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("GET", pattern_ChamaAPI_ListChamaMembers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/ListChamaMembers")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_ListChamaMembers_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_ListChamaMembers_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("POST", pattern_ChamaAPI_ListChamaMembers_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/ListChamaMembers")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_ListChamaMembers_1(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_ListChamaMembers_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("GET", pattern_ChamaAPI_GetChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaAPI/GetChamaMember")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ChamaAPI_GetChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ChamaAPI_GetChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	return nil
 }
 
@@ -1064,18 +953,6 @@ var (
 	pattern_ChamaAPI_ListChamas_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamas"}, "listChamasRequest"))
 
 	pattern_ChamaAPI_GetChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamas", "chama_id"}, ""))
-
-	pattern_ChamaAPI_CreateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
-
-	pattern_ChamaAPI_UpdateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "chama_member.member_id"}, ""))
-
-	pattern_ChamaAPI_DeleteChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
-
-	pattern_ChamaAPI_ListChamaMembers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
-
-	pattern_ChamaAPI_ListChamaMembers_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, "listChamaMembers"))
-
-	pattern_ChamaAPI_GetChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
 )
 
 var (
@@ -1088,16 +965,193 @@ var (
 	forward_ChamaAPI_ListChamas_1 = runtime.ForwardResponseMessage
 
 	forward_ChamaAPI_GetChama_0 = runtime.ForwardResponseMessage
+)
 
-	forward_ChamaAPI_CreateChamaMember_0 = runtime.ForwardResponseMessage
+// RegisterChamaMemberAPIHandlerFromEndpoint is same as RegisterChamaMemberAPIHandler but
+// automatically dials to "endpoint" and closes the connection when "ctx" gets done.
+func RegisterChamaMemberAPIHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+	conn, err := grpc.Dial(endpoint, opts...)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if err != nil {
+			if cerr := conn.Close(); cerr != nil {
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
+			}
+			return
+		}
+		go func() {
+			<-ctx.Done()
+			if cerr := conn.Close(); cerr != nil {
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
+			}
+		}()
+	}()
 
-	forward_ChamaAPI_UpdateChamaMember_0 = runtime.ForwardResponseMessage
+	return RegisterChamaMemberAPIHandler(ctx, mux, conn)
+}
 
-	forward_ChamaAPI_DeleteChamaMember_0 = runtime.ForwardResponseMessage
+// RegisterChamaMemberAPIHandler registers the http handlers for service ChamaMemberAPI to "mux".
+// The handlers forward requests to the grpc endpoint over "conn".
+func RegisterChamaMemberAPIHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterChamaMemberAPIHandlerClient(ctx, mux, NewChamaMemberAPIClient(conn))
+}
 
-	forward_ChamaAPI_ListChamaMembers_0 = runtime.ForwardResponseMessage
+// RegisterChamaMemberAPIHandlerClient registers the http handlers for service ChamaMemberAPI
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ChamaMemberAPIClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ChamaMemberAPIClient"
+// doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
+// "ChamaMemberAPIClient" to call the correct interceptors.
+func RegisterChamaMemberAPIHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ChamaMemberAPIClient) error {
 
-	forward_ChamaAPI_ListChamaMembers_1 = runtime.ForwardResponseMessage
+	mux.Handle("POST", pattern_ChamaMemberAPI_CreateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/CreateChamaMember")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_CreateChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
 
-	forward_ChamaAPI_GetChamaMember_0 = runtime.ForwardResponseMessage
+		forward_ChamaMemberAPI_CreateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("PATCH", pattern_ChamaMemberAPI_UpdateChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/UpdateChamaMember")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_UpdateChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ChamaMemberAPI_UpdateChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("DELETE", pattern_ChamaMemberAPI_DeleteChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/DeleteChamaMember")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_DeleteChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ChamaMemberAPI_DeleteChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ChamaMemberAPI_ListChamaMembers_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/ListChamaMembers")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_ListChamaMembers_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ChamaMemberAPI_ListChamaMembers_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_ChamaMemberAPI_ListChamaMembers_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/ListChamaMembers")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_ListChamaMembers_1(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ChamaMemberAPI_ListChamaMembers_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ChamaMemberAPI_GetChamaMember_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/gidyon.chama.ChamaMemberAPI/GetChamaMember")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ChamaMemberAPI_GetChamaMember_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ChamaMemberAPI_GetChamaMember_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	return nil
+}
+
+var (
+	pattern_ChamaMemberAPI_CreateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
+
+	pattern_ChamaMemberAPI_UpdateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "chama_member.member_id"}, ""))
+
+	pattern_ChamaMemberAPI_DeleteChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
+
+	pattern_ChamaMemberAPI_ListChamaMembers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
+
+	pattern_ChamaMemberAPI_ListChamaMembers_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, "listChamaMembers"))
+
+	pattern_ChamaMemberAPI_GetChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
+)
+
+var (
+	forward_ChamaMemberAPI_CreateChamaMember_0 = runtime.ForwardResponseMessage
+
+	forward_ChamaMemberAPI_UpdateChamaMember_0 = runtime.ForwardResponseMessage
+
+	forward_ChamaMemberAPI_DeleteChamaMember_0 = runtime.ForwardResponseMessage
+
+	forward_ChamaMemberAPI_ListChamaMembers_0 = runtime.ForwardResponseMessage
+
+	forward_ChamaMemberAPI_ListChamaMembers_1 = runtime.ForwardResponseMessage
+
+	forward_ChamaMemberAPI_GetChamaMember_0 = runtime.ForwardResponseMessage
 )
