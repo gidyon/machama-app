@@ -19,7 +19,7 @@ func randomPhone() string {
 func mockLoan() *loan.Loan {
 	return &loan.Loan{
 		ChamaId:      randomID(),
-		PlanId:       randomID(),
+		ProductId:    randomID(),
 		MemberId:     randomID(),
 		LoaneeNames:  randomdata.SillyName(),
 		LoaneePhone:  randomPhone(),

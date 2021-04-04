@@ -106,7 +106,7 @@ var _ = Describe("ListLoans", func() {
 
 		Describe("ListLoans with filters", func() {
 			chamaIDs := []string{"1"}
-			planIDs := []string{"1", "2"}
+			productIds := []string{"1", "2"}
 
 			It("should succeed when CHAMA_ID filter is on", func() {
 				var pageToken, nextPageToken = "", "test"
@@ -130,14 +130,14 @@ var _ = Describe("ListLoans", func() {
 				}
 			})
 
-			It("should succeed when PLAN_ID filter is on", func() {
+			It("should succeed when PRODUCT_ID filter is on", func() {
 				var pageToken, nextPageToken = "", "test"
 				for nextPageToken != "" {
 					listRes, err := LoanAPI.ListLoans(ctx, &loan.ListLoansRequest{
 						PageToken: pageToken,
 						PageSize:  defaultPageSize,
 						Filter: &loan.LoanFilter{
-							PlanIds: planIDs,
+							ProductIds: productIds,
 						},
 					})
 					Expect(err).ShouldNot(HaveOccurred())
@@ -147,7 +147,7 @@ var _ = Describe("ListLoans", func() {
 					pageToken = nextPageToken
 
 					for _, chamaPB := range listRes.Loans {
-						Expect(chamaPB.PlanId).Should(BeElementOf(planIDs))
+						Expect(chamaPB.ProductId).Should(BeElementOf(productIds))
 					}
 				}
 			})

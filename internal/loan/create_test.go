@@ -45,8 +45,8 @@ var _ = Describe("CreateLoan", func() {
 			Expect(createRes).Should(BeNil())
 			Expect(status.Code(err)).Should(Equal(codes.InvalidArgument))
 		})
-		It("should fail when plan id is missing", func() {
-			createReq.Loan.PlanId = ""
+		It("should fail when product id is missing", func() {
+			createReq.Loan.ProductId = ""
 			createRes, err := LoanAPI.CreateLoan(ctx, createReq)
 			Expect(err).Should(HaveOccurred())
 			Expect(createRes).Should(BeNil())

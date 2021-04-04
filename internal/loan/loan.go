@@ -72,7 +72,7 @@ func ValidateLoan(pb *loan.Loan) error {
 		return errs.MissingField("loan")
 	case pb.ChamaId == "":
 		return errs.MissingField("loan id")
-	case pb.PlanId == "":
+	case pb.ProductId == "":
 		return errs.MissingField("plan id")
 	case pb.MemberId == "":
 		return errs.MissingField("member id")
@@ -198,8 +198,8 @@ func (loanAPI *loanAPIServer) ListLoans(
 		if len(req.Filter.ChamaIds) != 0 {
 			db = db.Where("chama_id IN (?)", req.Filter.ChamaIds)
 		}
-		if len(req.Filter.PlanIds) != 0 {
-			db = db.Where("plan_id IN (?)", req.Filter.PlanIds)
+		if len(req.Filter.ProductIds) != 0 {
+			db = db.Where("product_id IN (?)", req.Filter.ProductIds)
 		}
 	}
 
