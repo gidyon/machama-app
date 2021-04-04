@@ -20,7 +20,7 @@ import (
 
 func TestChama(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Chama Suite")
+	RunSpecs(t, "Chama Member Suite")
 }
 
 var (
