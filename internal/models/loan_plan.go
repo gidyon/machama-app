@@ -43,6 +43,10 @@ type LoanProduct struct {
 	CreatedAt           time.Time `gorm:"autoCreateTime"`
 }
 
+func (*LoanProduct) TableName() string {
+	return "loan_products"
+}
+
 func LoanProductModel(pb *loan.LoanProduct) (*LoanProduct, error) {
 	if pb == nil {
 		return nil, errs.NilObject("loan plan")
