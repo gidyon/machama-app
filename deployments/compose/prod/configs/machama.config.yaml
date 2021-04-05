@@ -1,0 +1,28 @@
+serviceName: "MACHAMA APP"
+httpPort: 80
+startupSleepSeconds: 10
+logLevel: 2
+security:
+  serverName: localhost
+  insecure: true
+databases:
+- required: true
+  type: sqlDatabase
+  address: mysql:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: mysql
+    dialect: mysql
+    orm: gorm
+- required: true
+  type: redisDatabase
+  address: redis:6379
+  metadata:
+    name: redis
+externalServices:
+  - name: sms
+    required: true
+    address: localhost:9095
+    insecure: true

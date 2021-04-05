@@ -1,0 +1,36 @@
+serviceName: SUBSCRIBER API
+httpPort: 80
+startupSleepSeconds: 5
+logLevel: 0
+security:
+  insecure: true
+databases:
+- required: true
+  type: sqlDatabase
+  address: mysql:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: sqlWrites
+    dialect: mysql
+    orm: gorm
+- required: true
+  type: sqlDatabase
+  address: mysql:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: sqlReads
+    dialect: mysql
+    orm: gorm
+externalServices:
+- name: channel
+  required: true
+  address: channel:8080
+  insecure: true
+- name: account
+  required: true
+  address: account:8080
+  insecure: true

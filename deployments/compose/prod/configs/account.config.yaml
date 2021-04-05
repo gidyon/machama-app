@@ -1,0 +1,41 @@
+serviceName: ACCOUNT API
+httpPort: 80
+logLevel: 0
+security:
+  insecure: true
+databases:
+- required: true
+  type: sqlDatabase
+  address: mysql:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: sqlWrites
+    dialect: mysql
+    orm: gorm
+- required: true
+  type: sqlDatabase
+  address: mysql:3306
+  user: root
+  schema: machama
+  password: hakty11
+  metadata:
+    name: sqlReads
+    dialect: mysql
+    orm: gorm
+- required: true
+  type: redisDatabase
+  address: redis:6379
+  metadata:
+    name: redisWrites
+- required: true
+  type: redisDatabase
+  address: redis:6379
+  metadata:
+    name: redisReads
+externalServices:
+- name: messaging
+  required: true
+  address: messaging:8080
+  insecure: true
