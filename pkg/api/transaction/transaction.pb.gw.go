@@ -742,13 +742,13 @@ func RegisterChamaAccountAPIHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_ChamaAccountAPI_CreateChamaAccount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamaaccounts"}, ""))
+	pattern_ChamaAccountAPI_CreateChamaAccount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamaaccounts"}, ""))
 
-	pattern_ChamaAccountAPI_ListChamaAccounts_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamaaccounts"}, ""))
+	pattern_ChamaAccountAPI_ListChamaAccounts_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamaaccounts"}, ""))
 
-	pattern_ChamaAccountAPI_ListChamaAccounts_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamaaccounts"}, "listChamaAccounts"))
+	pattern_ChamaAccountAPI_ListChamaAccounts_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamaaccounts"}, "listChamaAccounts"))
 
-	pattern_ChamaAccountAPI_GetChamaAccount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamaaccounts", "account_id"}, ""))
+	pattern_ChamaAccountAPI_GetChamaAccount_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamaaccounts", "account_id"}, ""))
 )
 
 var (
@@ -903,15 +903,15 @@ func RegisterTransactionAPIHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_TransactionAPI_Deposit_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "transactions"}, "deposit"))
+	pattern_TransactionAPI_Deposit_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "transactions"}, "deposit"))
 
-	pattern_TransactionAPI_Withdraw_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "transactions"}, "withdraw"))
+	pattern_TransactionAPI_Withdraw_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "transactions"}, "withdraw"))
 
-	pattern_TransactionAPI_ListTransactions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "transactions"}, ""))
+	pattern_TransactionAPI_ListTransactions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "transactions"}, ""))
 
-	pattern_TransactionAPI_ListTransactions_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "transactions"}, "listTransactions"))
+	pattern_TransactionAPI_ListTransactions_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "transactions"}, "listTransactions"))
 
-	pattern_TransactionAPI_GetTransaction_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "transactions", "transaction_id"}, ""))
+	pattern_TransactionAPI_GetTransaction_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "transactions", "transaction_id"}, ""))
 )
 
 var (

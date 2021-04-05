@@ -11,7 +11,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/LoanProducts": {
+    "/api/machama/LoanProducts": {
       "get": {
         "operationId": "LoanProductAPI_ListLoanProducts",
         "responses": {
@@ -88,7 +88,7 @@
         ]
       }
     },
-    "/api/LoanProducts/{loanProduct.productId}": {
+    "/api/machama/LoanProducts/{loanProduct.productId}": {
       "patch": {
         "operationId": "LoanProductAPI_UpdateLoanProduct",
         "responses": {
@@ -126,7 +126,7 @@
         ]
       }
     },
-    "/api/LoanProducts/{productId}": {
+    "/api/machama/LoanProducts/{productId}": {
       "get": {
         "operationId": "LoanProductAPI_GetLoanProduct",
         "responses": {
@@ -184,7 +184,7 @@
         ]
       }
     },
-    "/api/LoanProducts:listLoanProducts": {
+    "/api/machama/LoanProducts:listLoanProducts": {
       "post": {
         "operationId": "LoanProductAPI_ListLoanProducts2",
         "responses": {
@@ -216,7 +216,7 @@
         ]
       }
     },
-    "/api/loans": {
+    "/api/machama/loans": {
       "get": {
         "operationId": "LoanAPI_ListLoans",
         "responses": {
@@ -303,7 +303,7 @@
         ]
       }
     },
-    "/api/loans/{loan.loanId}": {
+    "/api/machama/loans/{loan.loanId}": {
       "patch": {
         "operationId": "LoanAPI_UpdateLoan",
         "responses": {
@@ -341,7 +341,7 @@
         ]
       }
     },
-    "/api/loans/{loanId}": {
+    "/api/machama/loans/{loanId}": {
       "get": {
         "operationId": "LoanAPI_GetLoan",
         "responses": {
@@ -371,7 +371,7 @@
         ]
       }
     },
-    "/api/loans:approveLoan": {
+    "/api/machama/loans:approveLoan": {
       "post": {
         "operationId": "LoanAPI_ApproveLoan",
         "responses": {
@@ -403,7 +403,7 @@
         ]
       }
     },
-    "/api/loans:listLoans": {
+    "/api/machama/loans:listLoans": {
       "post": {
         "operationId": "LoanAPI_ListLoans2",
         "responses": {

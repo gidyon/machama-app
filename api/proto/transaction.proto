@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gidyon.transaction;
 
-option go_package="github.com/gidyon/machama-app/pkg/api/transaction";
+option go_package="github.com/gidyon/machama-app/pkg/api/machama/transaction";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
@@ -62,16 +62,16 @@ message GetChamaAccountRequest {
 service ChamaAccountAPI {
     rpc CreateChamaAccount (CreateChamaAccountRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/chamaaccounts"
+			post: "/api/machama/chamaaccounts"
 			body: "*"
 		};
     };
 
     rpc ListChamaAccounts (ListChamaAccountsRequest) returns (ListChamaAccountsResponse) {
         option (google.api.http) = {
-			get: "/api/chamaaccounts"
+			get: "/api/machama/chamaaccounts"
 			additional_bindings {
-				post: "/api/chamaaccounts:listChamaAccounts"
+				post: "/api/machama/chamaaccounts:listChamaAccounts"
 				body: "*"
 			}
 		};
@@ -79,7 +79,7 @@ service ChamaAccountAPI {
 
     rpc GetChamaAccount (GetChamaAccountRequest) returns (ChamaAccount) {
         option (google.api.http) = {
-			get: "/api/chamaaccounts/{account_id}"
+			get: "/api/machama/chamaaccounts/{account_id}"
 		};
     };
 }
@@ -139,23 +139,23 @@ message GetTransactionRequest {
 service TransactionAPI {
     rpc Deposit (DepositRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/transactions:deposit"
+			post: "/api/machama/transactions:deposit"
 			body: "*"
 		};
     };
 
     rpc Withdraw (WithdrawRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/transactions:withdraw"
+			post: "/api/machama/transactions:withdraw"
 			body: "*"
 		};
     };
 
     rpc ListTransactions (ListTransactionsRequest) returns (ListTransactionsResponse) {
         option (google.api.http) = {
-			get: "/api/transactions"
+			get: "/api/machama/transactions"
 			additional_bindings {
-				post: "/api/transactions:listTransactions"
+				post: "/api/machama/transactions:listTransactions"
 				body: "*"
 			}
 		};
@@ -163,7 +163,7 @@ service TransactionAPI {
 
     rpc GetTransaction (GetTransactionRequest) returns (Transaction) {
         option (google.api.http) = {
-			get: "/api/transactions/{transaction_id}"
+			get: "/api/machama/transactions/{transaction_id}"
 		};
     };
 }

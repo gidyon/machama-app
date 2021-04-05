@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gidyon.loan;
 
-option go_package="github.com/gidyon/machama-app/pkg/api/loan";
+option go_package="github.com/gidyon/machama-app/pkg/api/machama/loan";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
@@ -125,29 +125,29 @@ message ApproveLoanRequest {
 service LoanProductAPI {
     rpc CreateLoanProduct (CreateLoanProductRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/LoanProducts"
+			post: "/api/machama/LoanProducts"
 			body: "*"
 		};
     };
 
     rpc UpdateLoanProduct (UpdateLoanProductRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			patch: "/api/LoanProducts/{loan_product.product_id}"
+			patch: "/api/machama/LoanProducts/{loan_product.product_id}"
 			body: "*"
 		};
     };
 
     rpc DeleteLoanProduct (DeleteLoanProductRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			delete: "/api/LoanProducts/{product_id}"
+			delete: "/api/machama/LoanProducts/{product_id}"
 		};
     };
 
     rpc ListLoanProducts (ListLoanProductsRequest) returns (ListLoanProductsResponse) {
         option (google.api.http) = {
-			get: "/api/LoanProducts"
+			get: "/api/machama/LoanProducts"
 			additional_bindings {
-				post: "/api/LoanProducts:listLoanProducts"
+				post: "/api/machama/LoanProducts:listLoanProducts"
 				body: "*"
 			}
 		};
@@ -155,7 +155,7 @@ service LoanProductAPI {
 
     rpc GetLoanProduct (GetLoanProductRequest) returns (LoanProduct) {
         option (google.api.http) = {
-			get: "/api/LoanProducts/{product_id}"
+			get: "/api/machama/LoanProducts/{product_id}"
 		};
     };
 }
@@ -163,23 +163,23 @@ service LoanProductAPI {
 service LoanAPI {
     rpc CreateLoan (CreateLoanRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/loans"
+			post: "/api/machama/loans"
 			body: "*"
 		};
     };
 
     rpc UpdateLoan (UpdateLoanRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			patch: "/api/loans/{loan.loan_id}"
+			patch: "/api/machama/loans/{loan.loan_id}"
 			body: "*"
 		};
     };
 
     rpc ListLoans (ListLoansRequest) returns (ListLoansResponse) {
         option (google.api.http) = {
-			get: "/api/loans"
+			get: "/api/machama/loans"
 			additional_bindings {
-				post: "/api/loans:listLoans"
+				post: "/api/machama/loans:listLoans"
 				body: "*"
 			}
 		};
@@ -187,13 +187,13 @@ service LoanAPI {
 
     rpc GetLoan (GetLoanRequest) returns (Loan) {
         option (google.api.http) = {
-			get: "/api/loans/{loan_id}"
+			get: "/api/machama/loans/{loan_id}"
 		};
     };
 
     rpc ApproveLoan (ApproveLoanRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/loans:approveLoan"
+			post: "/api/machama/loans:approveLoan"
 			body: "*"
 		};
     };

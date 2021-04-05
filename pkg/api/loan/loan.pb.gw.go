@@ -1021,17 +1021,17 @@ func RegisterLoanProductAPIHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_LoanProductAPI_CreateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "LoanProducts"}, ""))
+	pattern_LoanProductAPI_CreateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "LoanProducts"}, ""))
 
-	pattern_LoanProductAPI_UpdateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "loan_product.product_id"}, ""))
+	pattern_LoanProductAPI_UpdateLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "LoanProducts", "loan_product.product_id"}, ""))
 
-	pattern_LoanProductAPI_DeleteLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "product_id"}, ""))
+	pattern_LoanProductAPI_DeleteLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "LoanProducts", "product_id"}, ""))
 
-	pattern_LoanProductAPI_ListLoanProducts_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "LoanProducts"}, ""))
+	pattern_LoanProductAPI_ListLoanProducts_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "LoanProducts"}, ""))
 
-	pattern_LoanProductAPI_ListLoanProducts_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "LoanProducts"}, "listLoanProducts"))
+	pattern_LoanProductAPI_ListLoanProducts_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "LoanProducts"}, "listLoanProducts"))
 
-	pattern_LoanProductAPI_GetLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "LoanProducts", "product_id"}, ""))
+	pattern_LoanProductAPI_GetLoanProduct_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "LoanProducts", "product_id"}, ""))
 )
 
 var (
@@ -1210,17 +1210,17 @@ func RegisterLoanAPIHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 }
 
 var (
-	pattern_LoanAPI_CreateLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "loans"}, ""))
+	pattern_LoanAPI_CreateLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "loans"}, ""))
 
-	pattern_LoanAPI_UpdateLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "loans", "loan.loan_id"}, ""))
+	pattern_LoanAPI_UpdateLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "loans", "loan.loan_id"}, ""))
 
-	pattern_LoanAPI_ListLoans_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "loans"}, ""))
+	pattern_LoanAPI_ListLoans_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "loans"}, ""))
 
-	pattern_LoanAPI_ListLoans_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "loans"}, "listLoans"))
+	pattern_LoanAPI_ListLoans_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "loans"}, "listLoans"))
 
-	pattern_LoanAPI_GetLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "loans", "loan_id"}, ""))
+	pattern_LoanAPI_GetLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "loans", "loan_id"}, ""))
 
-	pattern_LoanAPI_ApproveLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "loans"}, "approveLoan"))
+	pattern_LoanAPI_ApproveLoan_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "loans"}, "approveLoan"))
 )
 
 var (

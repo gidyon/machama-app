@@ -11,7 +11,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/chamaaccounts": {
+    "/api/machama/chamaaccounts": {
       "get": {
         "operationId": "ChamaAccountAPI_ListChamaAccounts",
         "responses": {
@@ -121,7 +121,7 @@
         ]
       }
     },
-    "/api/chamaaccounts/{accountId}": {
+    "/api/machama/chamaaccounts/{accountId}": {
       "get": {
         "operationId": "ChamaAccountAPI_GetChamaAccount",
         "responses": {
@@ -163,7 +163,7 @@
         ]
       }
     },
-    "/api/chamaaccounts:listChamaAccounts": {
+    "/api/machama/chamaaccounts:listChamaAccounts": {
       "post": {
         "operationId": "ChamaAccountAPI_ListChamaAccounts2",
         "responses": {
@@ -195,7 +195,7 @@
         ]
       }
     },
-    "/api/transactions": {
+    "/api/machama/transactions": {
       "get": {
         "operationId": "TransactionAPI_ListTransactions",
         "responses": {
@@ -274,7 +274,7 @@
         ]
       }
     },
-    "/api/transactions/{transactionId}": {
+    "/api/machama/transactions/{transactionId}": {
       "get": {
         "operationId": "TransactionAPI_GetTransaction",
         "responses": {
@@ -304,7 +304,7 @@
         ]
       }
     },
-    "/api/transactions:deposit": {
+    "/api/machama/transactions:deposit": {
       "post": {
         "operationId": "TransactionAPI_Deposit",
         "responses": {
@@ -336,7 +336,7 @@
         ]
       }
     },
-    "/api/transactions:listTransactions": {
+    "/api/machama/transactions:listTransactions": {
       "post": {
         "operationId": "TransactionAPI_ListTransactions2",
         "responses": {
@@ -368,7 +368,7 @@
         ]
       }
     },
-    "/api/transactions:withdraw": {
+    "/api/machama/transactions:withdraw": {
       "post": {
         "operationId": "TransactionAPI_Withdraw",
         "responses": {

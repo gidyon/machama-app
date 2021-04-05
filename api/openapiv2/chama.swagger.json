@@ -11,7 +11,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/chamamembers": {
+    "/api/machama/chamamembers": {
       "get": {
         "operationId": "ChamaMemberAPI_ListChamaMembers",
         "responses": {
@@ -88,7 +88,7 @@
         ]
       }
     },
-    "/api/chamamembers/{chamaMember.memberId}": {
+    "/api/machama/chamamembers/{chamaMember.memberId}": {
       "patch": {
         "operationId": "ChamaMemberAPI_UpdateChamaMember",
         "responses": {
@@ -126,7 +126,7 @@
         ]
       }
     },
-    "/api/chamamembers/{memberId}": {
+    "/api/machama/chamamembers/{memberId}": {
       "get": {
         "operationId": "ChamaMemberAPI_GetChamaMember",
         "responses": {
@@ -184,7 +184,7 @@
         ]
       }
     },
-    "/api/chamamembers:listChamaMembers": {
+    "/api/machama/chamamembers:listChamaMembers": {
       "post": {
         "operationId": "ChamaMemberAPI_ListChamaMembers2",
         "responses": {
@@ -216,7 +216,7 @@
         ]
       }
     },
-    "/api/chamas": {
+    "/api/machama/chamas": {
       "get": {
         "operationId": "ChamaAPI_ListChamas",
         "responses": {
@@ -293,7 +293,7 @@
         ]
       }
     },
-    "/api/chamas/{chama.chamaId}": {
+    "/api/machama/chamas/{chama.chamaId}": {
       "patch": {
         "operationId": "ChamaAPI_UpdateChama",
         "responses": {
@@ -331,7 +331,7 @@
         ]
       }
     },
-    "/api/chamas/{chamaId}": {
+    "/api/machama/chamas/{chamaId}": {
       "get": {
         "operationId": "ChamaAPI_GetChama",
         "responses": {
@@ -361,7 +361,7 @@
         ]
       }
     },
-    "/api/chamas:listChamasRequest": {
+    "/api/machama/chamas:listChamasRequest": {
       "post": {
         "operationId": "ChamaAPI_ListChamas2",
         "responses": {

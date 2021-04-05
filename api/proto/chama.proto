@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gidyon.chama;
 
-option go_package="github.com/gidyon/machama-app/pkg/api/chama";
+option go_package="github.com/gidyon/machama-app/pkg/api/machama/chama";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
@@ -109,23 +109,23 @@ message GetChamaMemberRequest {
 service ChamaAPI {
     rpc CreateChama (CreateChamaRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/chamas"
+			post: "/api/machama/chamas"
 			body: "*"
 		};
     };
 
     rpc UpdateChama (UpdateChamaRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			patch: "/api/chamas/{chama.chama_id}"
+			patch: "/api/machama/chamas/{chama.chama_id}"
 			body: "*"
 		};
     };
 
     rpc ListChamas (ListChamasRequest) returns (ListChamasResponse) {
         option (google.api.http) = {
-			get: "/api/chamas"
+			get: "/api/machama/chamas"
 			additional_bindings {
-				post: "/api/chamas:listChamasRequest"
+				post: "/api/machama/chamas:listChamasRequest"
 				body: "*"
 			}
 		};
@@ -133,7 +133,7 @@ service ChamaAPI {
 
     rpc GetChama (GetChamaRequest) returns (Chama) {
         option (google.api.http) = {
-			get: "/api/chamas/{chama_id}"
+			get: "/api/machama/chamas/{chama_id}"
 		};
     };
 }
@@ -141,29 +141,29 @@ service ChamaAPI {
 service ChamaMemberAPI {
     rpc CreateChamaMember (CreateChamaMemberRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			post: "/api/chamamembers"
+			post: "/api/machama/chamamembers"
 			body: "*"
 		};
     };
 
     rpc UpdateChamaMember (UpdateChamaMemberRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			patch: "/api/chamamembers/{chama_member.member_id}"
+			patch: "/api/machama/chamamembers/{chama_member.member_id}"
 			body: "*"
 		};
     };
 
     rpc DeleteChamaMember (DeleteChamaMemberRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-			delete: "/api/chamamembers/{member_id}"
+			delete: "/api/machama/chamamembers/{member_id}"
 		};
     };
 
     rpc ListChamaMembers (ListChamaMembersRequest) returns (ListChamaMembersResponse) {
         option (google.api.http) = {
-			get: "/api/chamamembers"
+			get: "/api/machama/chamamembers"
 			additional_bindings {
-				post: "/api/chamamembers:listChamaMembers"
+				post: "/api/machama/chamamembers:listChamaMembers"
 				body: "*"
 			}
 		};
@@ -171,7 +171,7 @@ service ChamaMemberAPI {
 
     rpc GetChamaMember (GetChamaMemberRequest) returns (ChamaMember) {
         option (google.api.http) = {
-			get: "/api/chamamembers/{member_id}"
+			get: "/api/machama/chamamembers/{member_id}"
 		};
     };
 }

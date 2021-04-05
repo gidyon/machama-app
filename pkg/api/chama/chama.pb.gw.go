@@ -944,15 +944,15 @@ func RegisterChamaAPIHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_ChamaAPI_CreateChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamas"}, ""))
+	pattern_ChamaAPI_CreateChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamas"}, ""))
 
-	pattern_ChamaAPI_UpdateChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamas", "chama.chama_id"}, ""))
+	pattern_ChamaAPI_UpdateChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamas", "chama.chama_id"}, ""))
 
-	pattern_ChamaAPI_ListChamas_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamas"}, ""))
+	pattern_ChamaAPI_ListChamas_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamas"}, ""))
 
-	pattern_ChamaAPI_ListChamas_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamas"}, "listChamasRequest"))
+	pattern_ChamaAPI_ListChamas_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamas"}, "listChamasRequest"))
 
-	pattern_ChamaAPI_GetChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamas", "chama_id"}, ""))
+	pattern_ChamaAPI_GetChama_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamas", "chama_id"}, ""))
 )
 
 var (
@@ -1129,17 +1129,17 @@ func RegisterChamaMemberAPIHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_ChamaMemberAPI_CreateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
+	pattern_ChamaMemberAPI_CreateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamamembers"}, ""))
 
-	pattern_ChamaMemberAPI_UpdateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "chama_member.member_id"}, ""))
+	pattern_ChamaMemberAPI_UpdateChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamamembers", "chama_member.member_id"}, ""))
 
-	pattern_ChamaMemberAPI_DeleteChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
+	pattern_ChamaMemberAPI_DeleteChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamamembers", "member_id"}, ""))
 
-	pattern_ChamaMemberAPI_ListChamaMembers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, ""))
+	pattern_ChamaMemberAPI_ListChamaMembers_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamamembers"}, ""))
 
-	pattern_ChamaMemberAPI_ListChamaMembers_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"api", "chamamembers"}, "listChamaMembers"))
+	pattern_ChamaMemberAPI_ListChamaMembers_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "machama", "chamamembers"}, "listChamaMembers"))
 
-	pattern_ChamaMemberAPI_GetChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "chamamembers", "member_id"}, ""))
+	pattern_ChamaMemberAPI_GetChamaMember_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "machama", "chamamembers", "member_id"}, ""))
 )
 
 var (
