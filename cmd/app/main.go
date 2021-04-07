@@ -2,12 +2,15 @@ package main
 
 import (
 	"context"
+	"errors"
 	"os"
+	"strings"
 
 	chama_app "github.com/gidyon/machama-app/internal/chama"
 	"github.com/gidyon/machama-app/internal/chamamember"
 	loan_app "github.com/gidyon/machama-app/internal/loan"
 	loanproduct "github.com/gidyon/machama-app/internal/loanplan"
+	"github.com/gidyon/machama-app/internal/models"
 	"github.com/gidyon/machama-app/internal/moneyaccount"
 	transaction_app "github.com/gidyon/machama-app/internal/transaction"
 	"github.com/gidyon/machama-app/pkg/api/chama"
@@ -53,7 +56,11 @@ func main() {
 	app.AddGRPCUnaryServerInterceptors(logginUIs...)
 	app.AddGRPCStreamServerInterceptors(loggingSIs...)
 
-	jwtKey := []byte(os.Getenv("JWT_SIGNING_KEY"))
+	jwtKey := []byte(strings.TrimSpace(os.Getenv("JWT_SIGNING_KEY")))
+
+	if len(jwtKey) == 0 {
+		errs.Panic(errors.New("missing jwt key"))
+	}
 
 	// Authentication API
 	authAPI, err := auth.NewAPI(&auth.Options{
@@ -80,6 +87,31 @@ func main() {
 	app.Start(ctx, func() error {
 		sqlDB := app.GormDB()
 		logger := app.Logger()
+
+		// Automigrations
+		if !sqlDB.Migrator().HasTable(&models.Chama{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.Chama{}))
+		}
+
+		if !sqlDB.Migrator().HasTable(&models.ChamaAccount{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.ChamaAccount{}))
+		}
+
+		if !sqlDB.Migrator().HasTable(&models.ChamaMember{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.ChamaMember{}))
+		}
+
+		if !sqlDB.Migrator().HasTable(&models.Loan{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.Loan{}))
+		}
+
+		if !sqlDB.Migrator().HasTable(&models.LoanProduct{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.LoanProduct{}))
+		}
+
+		if !sqlDB.Migrator().HasTable(&models.Transaction{}) {
+			errs.Panic(sqlDB.Migrator().AutoMigrate(&models.Transaction{}))
+		}
 
 		pageHasher, err := encryption.NewHasher(string(jwtKey))
 		errs.Panic(err)
