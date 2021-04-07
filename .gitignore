@@ -15,3 +15,5 @@
 # vendor/
 .coverage
 *.coverprofile
+*.pem
+secrets
