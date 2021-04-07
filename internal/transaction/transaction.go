@@ -97,7 +97,7 @@ func (transactionAPI *transactionAPIServer) Deposit(ctx context.Context, req *tr
 		}
 	}()
 	if tx.Error != nil {
-		return nil, errs.FailedToBeginTx(err)
+		return nil, errs.FailedToBeginTx(tx.Error)
 	}
 
 	// Create transaction
@@ -175,7 +175,7 @@ func (transactionAPI *transactionAPIServer) Withdraw(ctx context.Context, req *t
 		}
 	}()
 	if tx.Error != nil {
-		return nil, errs.FailedToBeginTx(err)
+		return nil, errs.FailedToBeginTx(tx.Error)
 	}
 
 	// Create transaction
