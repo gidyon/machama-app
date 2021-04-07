@@ -2,10 +2,10 @@ version: "3"
 
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
     container_name: nginx
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./configs/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
@@ -20,21 +20,21 @@ services:
     container_name: mysql
     image: mysql:8.0.18
     ports:
-      - "3306:3306"
+      - "3310:3306"
     volumes:
       - /home/ubuntu/gideon/mysql-storage/machama-prod/:/var/lib/mysql
     environment:
       MYSQL_HOST: localhost
       MYSQL_USER: root
-      MYSQL_PASSWORD: hakty11
-      MYSQL_ROOT_PASSWORD: hakty11
+      MYSQL_PASSWORD: s2;J5jUD&ZHt~D-L
+      MYSQL_ROOT_PASSWORD: s2;J5jUD&ZHt~D-L
       MYSQL_DATABASE: machama
 
   redis:
     container_name: redis
-    image: redis:latest
+    image: redis:alpine
     ports:
-      - "6379:6379"
+      - "6390:6379"
 
   machama:
     container_name: machama
@@ -57,6 +57,9 @@ services:
       - "mysql"
     deploy:
       replicas: 1
+    ports:
+      - "9090:80"
+      - "9080:8080"
     volumes:
       - ./configs/account.config.yaml:/app/configs/config.yml
       - ./templates/:/app/templates
@@ -68,8 +71,6 @@ services:
       ACTIVATION_URL: https://ldaddress/activate
       FIREBASE_CREDENTIALS_FILE: /app/secrets/firebase.creds.json
       JWT_SIGNING_KEY: QFyvRWu7CeoHl6VS54ACvc27B7acfKCYWRLz7T8vSyBMOUA3VbKG9G1nLgsOmV9gryrTlkpKN357fcM0C81NsJ0ROHa4Jx8ps
-      API_HASH_KEY: hmpVpI2nyiMhYIqLQlNfcL6QD37IOX1CklyU6TmVTy8hfbhblYUnKrHh4S93S2zORhmF2E3e6xDMLH5Dps0lM8XCQsV8cSP
-      API_BLOCK_KEY: PLTUTCo256Cg84A4lgZpa6mLsMqsX5qZzHTbD3Q2YbbRm5dejA9NGIufbhHkHcbjrPCsNt89W
 
   messaging:
     container_name: messaging
@@ -84,8 +85,6 @@ services:
     environment:
       SENDER_EMAIL_ADDRESS: gideonhacer@gmail.com
       JWT_SIGNING_KEY: QFyvRWu7CeoHl6VS54ACvc27B7acfKCYWRLz7T8vSyBMOUA3VbKG9G1nLgsOmV9gryrTlkpKN357fcM0C81NsJ0ROHa4Jx8ps
-      API_HASH_KEY: hmpVpI2nyiMhYIqLQlNfcL6QD37IOX1CklyU6TmVTy8hfbhblYUnKrHh4S93S2zORhmF2E3e6xDMLH5Dps0lM8XCQsV8cSP
-      API_BLOCK_KEY: PLTUTCo256Cg84A4lgZpa6mLsMqsX5qZzHTbD3Q2YbbRm5dejA9NGIufbhHkHcbjrPCsNt89W
 
   subscriber:
     container_name: subscriber
@@ -99,8 +98,6 @@ services:
       - ./configs/subscriber.config.yaml:/app/configs/config.yml
     environment:
       JWT_SIGNING_KEY: QFyvRWu7CeoHl6VS54ACvc27B7acfKCYWRLz7T8vSyBMOUA3VbKG9G1nLgsOmV9gryrTlkpKN357fcM0C81NsJ0ROHa4Jx8ps
-      API_HASH_KEY: hmpVpI2nyiMhYIqLQlNfcL6QD37IOX1CklyU6TmVTy8hfbhblYUnKrHh4S93S2zORhmF2E3e6xDMLH5Dps0lM8XCQsV8cSP
-      API_BLOCK_KEY: PLTUTCo256Cg84A4lgZpa6mLsMqsX5qZzHTbD3Q2YbbRm5dejA9NGIufbhHkHcbjrPCsNt89W
     
   channel:
     container_name: channel
@@ -114,8 +111,6 @@ services:
       - ./configs/channel.config.yaml:/app/configs/config.yml
     environment:
       JWT_SIGNING_KEY: QFyvRWu7CeoHl6VS54ACvc27B7acfKCYWRLz7T8vSyBMOUA3VbKG9G1nLgsOmV9gryrTlkpKN357fcM0C81NsJ0ROHa4Jx8ps
-      API_HASH_KEY: hmpVpI2nyiMhYIqLQlNfcL6QD37IOX1CklyU6TmVTy8hfbhblYUnKrHh4S93S2zORhmF2E3e6xDMLH5Dps0lM8XCQsV8cSP
-      API_BLOCK_KEY: PLTUTCo256Cg84A4lgZpa6mLsMqsX5qZzHTbD3Q2YbbRm5dejA9NGIufbhHkHcbjrPCsNt89W
 
   sms:
     container_name: sms
@@ -133,7 +128,3 @@ services:
 #     file: ./firebase.creds.json
 #   jwt_signing_key:
 #     file: ./jwtkey
-
-networks:
-  frontend-bridge:
-    external: true
