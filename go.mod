@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/Pallinder/go-randomdata v1.2.0
 	github.com/gidyon/micro v1.12.0
-	github.com/gidyon/micro/v2 v2.3.3
+	github.com/gidyon/micro/v2 v2.4.0
 	github.com/gidyon/services v0.8.0
 	github.com/golang/protobuf v1.5.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
